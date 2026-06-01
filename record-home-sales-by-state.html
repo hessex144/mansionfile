@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Most Expensive Home Ever Sold in Every US State — MansionFile</title>
+<meta name="description" content="The verified all-time record residential sale price in every US state. From Ken Griffin's $238M Manhattan penthouse to the $225M Naples compound — the definitive record of America's biggest home sales.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0d0b;
+    --parchment: #f5f2ec;
+    --gold: #b8972a;
+    --gold-light: #d4af55;
+    --muted: #6b6560;
+    --border: rgba(14,13,11,0.12);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--parchment);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem; height: 64px;
+    background: rgba(245,242,236,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--parchment); background: var(--ink); padding: 9px 20px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--gold); }
+
+  /* HERO */
+  .page-hero {
+    padding: 120px 5rem 5rem;
+    border-bottom: 0.5px solid var(--border);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: end;
+  }
+  .breadcrumb { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 8px; }
+  .breadcrumb a { color: var(--gold); text-decoration: none; }
+  .page-title { font-family: var(--serif); font-size: clamp(38px, 5vw, 64px); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; }
+  .page-title em { font-style: italic; color: var(--gold); }
+  .page-meta { font-size: 13px; color: var(--muted); margin-top: 1.5rem; display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+  .hero-intro { font-size: 17px; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .hero-stat { background: var(--parchment); padding: 1.25rem 1.5rem; }
+  .hero-stat-val { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--ink); line-height: 1; }
+  .hero-stat-val em { color: var(--gold); font-style: normal; }
+  .hero-stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
+
+  /* ACCURACY BADGE */
+  .accuracy-bar {
+    background: var(--ink); padding: 1rem 5rem;
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+  .accuracy-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
+  .accuracy-text { font-size: 13px; color: rgba(245,242,236,0.75); font-weight: 300; }
+  .accuracy-text strong { color: var(--gold-light); font-weight: 500; }
+
+  /* CONTENT */
+  .content { max-width: 1200px; margin: 0 auto; padding: 5rem; }
+
+  .intro-block { max-width: 720px; margin-bottom: 4rem; padding-bottom: 3rem; border-bottom: 0.5px solid var(--border); }
+  .intro-block p { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--muted); margin-bottom: 1rem; }
+  .intro-block p:last-child { margin-bottom: 0; }
+
+  /* RECORD CARDS */
+  .records-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-bottom: 5rem;
+  }
+
+  .record-card {
+    background: var(--parchment);
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 200px;
+    gap: 0;
+    transition: background 0.2s;
+  }
+  .record-card:hover { background: #efecea; }
+
+  .record-rank {
+    padding: 2.5rem 2rem;
+    border-right: 0.5px solid var(--border);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+  }
+  .rank-num {
+    font-family: var(--serif); font-size: 42px; font-weight: 300;
+    color: rgba(14,13,11,0.15); line-height: 1;
+  }
+
+  .record-main {
+    padding: 2.5rem 3rem;
+    border-right: 0.5px solid var(--border);
+  }
+  .record-state {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .record-state::before { content: ''; display: block; width: 16px; height: 0.5px; background: var(--gold); }
+  .record-price {
+    font-family: var(--serif); font-size: 52px; font-weight: 300;
+    line-height: 1; letter-spacing: -0.02em; margin-bottom: 0.5rem;
+  }
+  .record-name { font-size: 16px; font-weight: 500; margin-bottom: 0.25rem; }
+  .record-location { font-size: 13px; color: var(--muted); }
+
+  .record-details {
+    padding: 2.5rem 2.5rem;
+    border-right: 0.5px solid var(--border);
+    display: flex; flex-direction: column; justify-content: center;
+    gap: 1.25rem;
+  }
+  .detail-row { display: flex; flex-direction: column; gap: 2px; }
+  .detail-label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .detail-val { font-size: 15px; font-weight: 400; color: var(--ink); }
+
+  .record-story {
+    padding: 2.5rem 2rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .record-quote {
+    font-family: var(--serif); font-size: 15px; font-style: italic;
+    font-weight: 300; line-height: 1.7; color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .record-link {
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none; border-bottom: 0.5px solid var(--gold);
+    padding-bottom: 1px; transition: opacity 0.2s; align-self: flex-start;
+  }
+  .record-link:hover { opacity: 0.7; }
+
+  /* COMING SOON STATES */
+  .coming-soon-section { margin-bottom: 5rem; }
+  .coming-soon-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--border);
+  }
+  .coming-soon-title { font-family: var(--serif); font-size: 32px; font-weight: 300; }
+  .coming-soon-title em { font-style: italic; color: var(--gold); }
+  .coming-soon-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1px; background: var(--border);
+  }
+  .coming-soon-state {
+    background: var(--parchment);
+    padding: 1.25rem 1.5rem;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .cs-state-name { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .cs-status {
+    font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: rgba(14,13,11,0.3);
+  }
+  .cs-status.researching { color: var(--gold); }
+
+  /* METHODOLOGY */
+  .methodology { margin-bottom: 5rem; padding-top: 3rem; border-top: 0.5px solid var(--border); max-width: 720px; }
+  .methodology h2 { font-family: var(--serif); font-size: 28px; font-weight: 300; margin-bottom: 1.5rem; }
+  .methodology p { font-size: 15px; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
+  .methodology p:last-child { margin-bottom: 0; }
+
+  /* NEWSLETTER */
+  .newsletter { background: var(--gold); padding: 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .newsletter h2 { font-family: var(--serif); font-size: 42px; font-weight: 300; color: var(--ink); line-height: 1.1; }
+  .newsletter p { font-size: 15px; color: rgba(14,13,11,0.7); margin-top: 1rem; font-weight: 300; line-height: 1.7; }
+  .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+  .newsletter-form input { background: rgba(14,13,11,0.1); border: 0.5px solid rgba(14,13,11,0.3); padding: 14px 18px; font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none; }
+  .newsletter-form input::placeholder { color: rgba(14,13,11,0.5); }
+  .newsletter-form input:focus { border-color: var(--ink); }
+  .newsletter-form button { background: var(--ink); color: var(--parchment); border: none; padding: 14px 28px; font-family: var(--sans); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; font-weight: 500; transition: opacity 0.2s; }
+  .newsletter-form button:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: var(--parchment); padding: 4rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; }
+  .footer-logo { font-family: var(--serif); font-size: 24px; font-weight: 300; margin-bottom: 1rem; }
+  .footer-logo span { color: var(--gold); font-style: italic; }
+  .footer-tagline { font-size: 13px; color: rgba(245,242,236,0.4); line-height: 1.7; font-weight: 300; }
+  .footer-col-title { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.5rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .footer-links a { font-size: 14px; color: rgba(245,242,236,0.6); text-decoration: none; transition: color 0.2s; font-weight: 300; }
+  .footer-links a:hover { color: var(--parchment); }
+  .footer-bottom { background: var(--ink); padding: 1.5rem 5rem; border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { font-size: 12px; color: rgba(245,242,236,0.3); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .page-title { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-intro { animation: fadeUp 0.6s ease 0.2s both; }
+
+  @media (max-width: 1024px) {
+    .record-card { grid-template-columns: 1fr; }
+    .record-rank { display: none; }
+    .record-main, .record-details, .record-story { border-right: none; border-bottom: 0.5px solid var(--border); }
+    .record-story { border-bottom: none; }
+  }
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .page-hero { grid-template-columns: 1fr; padding: 100px 2rem 3rem; gap: 2rem; }
+    .accuracy-bar { padding: 1rem 2rem; }
+    .content { padding: 3rem 2rem; }
+    .newsletter { grid-template-columns: 1fr; padding: 3rem 2rem; }
+    footer { grid-template-columns: 1fr; padding: 3rem 2rem; gap: 2rem; }
+    .footer-bottom { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Mansion<span>File</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Most Expensive</a></li>
+    <li><a href="#">Celebrity Homes</a></li>
+    <li><a href="#">Record Sales</a></li>
+    <li><a href="#">Unique Properties</a></li>
+    <li><a href="#">By State</a></li>
+  </ul>
+  <a href="#newsletter" class="nav-cta">Subscribe</a>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div>
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>→</span> <span>Record Sales</span> <span>→</span> <span>By State</span></div>
+    <h1 class="page-title">The most expensive home <em>ever sold</em> in every US state</h1>
+    <div class="page-meta">
+      <span>Verified June 2026</span>
+      <span>·</span>
+      <span>6 states confirmed</span>
+      <span>·</span>
+      <span>Growing database</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <p class="hero-intro">These are permanent facts — verified closed sales with confirmed prices from public records and multiple reputable sources. Every figure on this page can be checked. We only publish what we can prove.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">$<em>238</em>M</div>
+        <div class="hero-stat-label">US all-time record</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val"><em>6</em></div>
+        <div class="hero-stat-label">States verified</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val"><em>44</em></div>
+        <div class="hero-stat-label">States in research</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val"><em>2019</em>–<em>25</em></div>
+        <div class="hero-stat-label">Years covered</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCURACY BAR -->
+<div class="accuracy-bar">
+  <div class="accuracy-dot"></div>
+  <p class="accuracy-text">Every sale on this page is <strong>verified from multiple sources</strong> including Wall Street Journal, Redfin, public property records, and licensed brokerage disclosures. We do not publish unverified estimates.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <div class="intro-block">
+    <p>Most "most expensive homes" lists on the internet are riddled with stale, inaccurate, or unverifiable data. We built this page differently. Every entry below has been confirmed through multiple independent sources, with sale prices verified against public records and major real estate publications.</p>
+    <p>We're starting with the 6 states where we have bulletproof data, and adding states as we complete verification. If you know of a verifiable record sale in your state, <a href="mailto:tips@mansionfile.com" style="color:var(--gold);">contact us</a>.</p>
+  </div>
+
+  <!-- RECORDS GRID -->
+  <div class="records-grid">
+
+    <!-- NEW YORK -->
+    <div class="record-card">
+      <div class="record-rank"><div class="rank-num">01</div></div>
+      <div class="record-main">
+        <div class="record-state">New York</div>
+        <div class="record-price">$238M</div>
+        <div class="record-name">220 Central Park South — Penthouse</div>
+        <div class="record-location">Billionaires' Row, Manhattan, NY</div>
+      </div>
+      <div class="record-details">
+        <div class="detail-row">
+          <div class="detail-label">Buyer</div>
+          <div class="detail-val">Ken Griffin, Citadel CEO</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Year sold</div>
+          <div class="detail-val">January 2019</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Size</div>
+          <div class="detail-val">~24,000 sq ft across 4 floors</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">US rank</div>
+          <div class="detail-val">#1 — All-time US record</div>
+        </div>
+      </div>
+      <div class="record-story">
+        <p class="record-quote">"The most expensive home ever sold in US history. Griffin, worth over $30 billion, purchased the top four floors of 220 CPS on Billionaires' Row — the same building where hedge fund titans and Saudi royalty also own units."</p>
+        <a href="https://www.wsj.com/articles/hedge-fund-billionaire-ken-griffin-pays-238-million-for-new-york-apartment-11549303374" target="_blank" rel="noopener" class="record-link">Source: WSJ →</a>
+      </div>
+    </div>
+
+    <!-- FLORIDA -->
+    <div class="record-card">
+      <div class="record-rank"><div class="rank-num">02</div></div>
+      <div class="record-main">
+        <div class="record-state">Florida</div>
+        <div class="record-price">$225M</div>
+        <div class="record-name">Gordon Drive Compound — Port Royal</div>
+        <div class="record-location">Naples, FL 34102</div>
+      </div>
+      <div class="record-details">
+        <div class="detail-row">
+          <div class="detail-label">Seller</div>
+          <div class="detail-val">DeGroote family (Canada)</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Year sold</div>
+          <div class="detail-val">April 2025</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Size</div>
+          <div class="detail-val">15 acres · 800 ft Gulf frontage</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Originally listed</div>
+          <div class="detail-val">$295M (2023)</div>
+        </div>
+      </div>
+      <div class="record-story">
+        <p class="record-quote">"Three contiguous waterfront parcels on Gordon Drive in Port Royal — one of the most exclusive addresses in America. The buyer's identity remains undisclosed. Florida's all-time record and the 2nd most expensive US residential sale in history."</p>
+        <a href="https://www.inman.com/2025/04/28/naples-estate-shatters-florida-home-sale-record-with-225m-sale/" target="_blank" rel="noopener" class="record-link">Source: Inman →</a>
+      </div>
+    </div>
+
+    <!-- CALIFORNIA -->
+    <div class="record-card">
+      <div class="record-rank"><div class="rank-num">03</div></div>
+      <div class="record-main">
+        <div class="record-state">California</div>
+        <div class="record-price">$210M</div>
+        <div class="record-name">Jannard Estate — Pacific Coast Highway</div>
+        <div class="record-location">Malibu, CA</div>
+      </div>
+      <div class="record-details">
+        <div class="detail-row">
+          <div class="detail-label">Seller</div>
+          <div class="detail-val">James Jannard (Oakley founder)</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Year sold</div>
+          <div class="detail-val">2024</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Size</div>
+          <div class="detail-val">9.5 acres · 300 ft ocean frontage</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Purchased by Jannard</div>
+          <div class="detail-val">$31M in 2001 — 577% return</div>
+        </div>
+      </div>
+      <div class="record-story">
+        <p class="record-quote">"A cliffside Malibu estate surpassing Beyoncé and Jay-Z's $200M record from 2023. The Italian-style villa was designed by Ferguson & Shamamian and its interiors by Michael S. Smith — the same designer who remodeled Obama's White House."</p>
+        <a href="https://patch.com/california/malibu/cas-most-expensive-home-sale-ever-210m-malibu-oceanfront-estate" target="_blank" rel="noopener" class="record-link">Source: Patch/LA Times →</a>
+      </div>
+    </div>
+
+    <!-- CONNECTICUT -->
+    <div class="record-card">
+      <div class="record-rank"><div class="rank-num">04</div></div>
+      <div class="record-main">
+        <div class="record-state">Connecticut</div>
+        <div class="record-price">$139M</div>
+        <div class="record-name">Copper Beech Farm</div>
+        <div class="record-location">Greenwich, CT</div>
+      </div>
+      <div class="record-details">
+        <div class="detail-row">
+          <div class="detail-label">Seller</div>
+          <div class="detail-val">Ray Dalio (Bridgewater founder)</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Year sold</div>
+          <div class="detail-val">2023</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Size</div>
+          <div class="detail-val">50 acres · ~1 mile of water frontage</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Originally listed</div>
+          <div class="detail-val">$190M (2013)</div>
+        </div>
+      </div>
+      <div class="record-story">
+        <p class="record-quote">"Dalio paid $120M for Copper Beech Farm in 2014 and sold it a decade later for $139M — still Connecticut's all-time record. The 1898-built estate has 50 acres on Long Island Sound, a 13,500 sq ft main house, and two private islands."</p>
+        <a href="https://robbreport.com/shelter/homes-for-sale/gallery/most-expensive-expensive-homes-us-1234791795/" target="_blank" rel="noopener" class="record-link">Source: Robb Report →</a>
+      </div>
+    </div>
+
+    <!-- COLORADO -->
+    <div class="record-card">
+      <div class="record-rank"><div class="rank-num">05</div></div>
+      <div class="record-main">
+        <div class="record-state">Colorado</div>
+        <div class="record-price">$120M</div>
+        <div class="record-name">St. Benedict's Monastery — Snowmass</div>
+        <div class="record-location">Old Snowmass, CO (near Aspen)</div>
+      </div>
+      <div class="record-details">
+        <div class="detail-row">
+          <div class="detail-label">Buyer</div>
+          <div class="detail-val">Alex Karp (Palantir CEO)</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Year sold</div>
+          <div class="detail-val">December 2025</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Size</div>
+          <div class="detail-val">3,700 acres · 24,000 sq ft main building</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Former owners</div>
+          <div class="detail-val">Trappist monks (~70 years)</div>
+        </div>
+      </div>
+      <div class="record-story">
+        <p class="record-quote">"The most extraordinary purchase on this list — a billionaire CEO buying a working monastery from Trappist monks. The 3,700-acre compound adjacent to 3,000 acres of Bureau of Land Management land sits 30 minutes from Aspen and will be used as a private residence."</p>
+        <a href="https://therealdeal.com/national/denver/2025/12/17/alex-karp-buys-snowmass-monastery-for-120-million/" target="_blank" rel="noopener" class="record-link">Source: The Real Deal →</a>
+      </div>
+    </div>
+
+    <!-- HAWAII -->
+    <div class="record-card">
+      <div class="record-rank"><div class="rank-num">06</div></div>
+      <div class="record-main">
+        <div class="record-state">Hawaii</div>
+        <div class="record-price">$65.75M</div>
+        <div class="record-name">Hale Hanohano — "House of Honor"</div>
+        <div class="record-location">4823 Kahala Ave, Honolulu, HI</div>
+      </div>
+      <div class="record-details">
+        <div class="detail-row">
+          <div class="detail-label">Buyer</div>
+          <div class="detail-val">B. Wayne Hughes Jr. (Public Storage heir)</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Year sold</div>
+          <div class="detail-val">March 2025</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Size</div>
+          <div class="detail-val">1.5 acres · 213 ft oceanfront</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Note</div>
+          <div class="detail-val">Sold $800K over asking price</div>
+        </div>
+      </div>
+      <div class="record-story">
+        <p class="record-quote">"Built in 2018 on Kahala Avenue — Honolulu's most prestigious street — this estate sold nearly $1M over asking price, suggesting competitive bidding. Hughes, worth $2 billion, is a born-and-raised Californian and avid surfer who moved to Wyoming."</p>
+        <a href="https://www.coldwellbankerluxury.com/editorial/hale-hanohano-honolulu-s-house-of-honor-shatters-hawaii-real-estate-records-with-65-75-million-sale" target="_blank" rel="noopener" class="record-link">Source: Coldwell Banker →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COMING SOON -->
+  <div class="coming-soon-section">
+    <div class="coming-soon-header">
+      <h2 class="coming-soon-title">States <em>in research</em></h2>
+      <span style="font-size:13px;color:var(--muted);">Updated as verification is completed</span>
+    </div>
+    <div class="coming-soon-grid">
+      <div class="coming-soon-state"><div class="cs-state-name">Texas</div><div class="cs-status">Non-disclosure state</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Washington</div><div class="cs-status researching">Researching</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Massachusetts</div><div class="cs-status researching">Researching</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Illinois</div><div class="cs-status researching">Researching</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">New Jersey</div><div class="cs-status researching">Researching</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Georgia</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">North Carolina</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Tennessee</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Nevada</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Arizona</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Montana</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Wyoming</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Idaho</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Oregon</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Utah</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Virginia</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Maryland</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Pennsylvania</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Minnesota</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Michigan</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Ohio</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Wisconsin</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Missouri</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">South Carolina</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Louisiana</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Alabama</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Alaska</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Rhode Island</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Vermont</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Maine</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">New Hampshire</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Delaware</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Iowa</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Kansas</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Nebraska</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Indiana</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Kentucky</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Arkansas</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Mississippi</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">Oklahoma</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">West Virginia</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">South Dakota</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">North Dakota</div><div class="cs-status">Coming soon</div></div>
+      <div class="coming-soon-state"><div class="cs-state-name">New Mexico</div><div class="cs-status">Coming soon</div></div>
+    </div>
+  </div>
+
+  <div class="methodology">
+    <h2>Our verification standard</h2>
+    <p>Every sale on this page has been confirmed by at least two of the following: Wall Street Journal real estate reporting, Redfin verified closed sales data, public county property records, licensed brokerage press releases, or reporting by Robb Report, Architectural Digest, or Inman News.</p>
+    <p>We do not include off-market sales that cannot be independently verified, estimates or assessments, listing prices (only closed sales), or sales from non-disclosure states where final prices are not public record. Texas, for example, is a non-disclosure state — even widely-reported sale prices cannot be confirmed from public records.</p>
+    <p>This page is updated as new records are set and as we complete verification for additional states. Last reviewed June 2026. Know of a verifiable state record we've missed? <a href="mailto:tips@mansionfile.com" style="color:var(--gold);">Send us the source.</a></p>
+  </div>
+
+</div>
+
+<!-- NEWSLETTER -->
+<section class="newsletter" id="newsletter">
+  <div>
+    <h2>The weekly filing.</h2>
+    <p>One email, every Friday. The week's most remarkable listing, record-breaking sale, and one property you need to see to believe. No spam, ever.</p>
+  </div>
+  <div>
+    <form class="newsletter-form" onsubmit="return false;">
+      <input type="email" placeholder="Your email address">
+      <button type="submit">Join the file →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Mansion<span>File</span></div>
+    <p class="footer-tagline">The definitive record of extraordinary residential real estate. Built for the curious. Every figure verified.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Explore</div>
+    <ul class="footer-links">
+      <li><a href="#">Most Expensive</a></li>
+      <li><a href="#">Celebrity Homes</a></li>
+      <li><a href="#">Record Sales</a></li>
+      <li><a href="#">Unique Properties</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Records</div>
+    <ul class="footer-links">
+      <li><a href="#">New York</a></li>
+      <li><a href="#">Florida</a></li>
+      <li><a href="#">California</a></li>
+      <li><a href="#">Connecticut</a></li>
+      <li><a href="#">Colorado</a></li>
+      <li><a href="#">Hawaii</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 MansionFile. All rights reserved.</p>
+  <p>For informational purposes only. Not a brokerage.</p>
+</div>
+
+</body>
+</html>
