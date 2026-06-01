@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MLB Player Homes: Shohei Ohtani, Aaron Judge & More — MansionFile</title>
+<meta name="description" content="Inside the homes of baseball's biggest stars — Shohei Ohtani's La Cañada Flintridge mansion, Aaron Judge's Hudson River penthouse, and Mike Trout's South Jersey estate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0e0d0b; --parchment: #f5f2ec; --gold: #b8972a;
+    --gold-light: #d4af55; --muted: #6b6560;
+    --border: rgba(14,13,11,0.12);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+  body { font-family: var(--sans); background: var(--parchment); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 64px; background: rgba(245,242,236,0.95); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); }
+  .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--parchment); background: var(--ink); padding: 9px 20px; text-decoration: none; }
+  /* HERO */
+  .hero { background: var(--ink); color: var(--parchment); padding: 120px 5rem 5rem; }
+  .breadcrumb { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,242,236,0.4); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 8px; }
+  .breadcrumb a { color: var(--gold); text-decoration: none; }
+  .hero-title { font-family: var(--serif); font-size: clamp(42px, 5.5vw, 72px); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 1.5rem; max-width: 720px; }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: 17px; font-weight: 300; color: rgba(245,242,236,0.6); line-height: 1.8; max-width: 600px; margin-bottom: 2rem; }
+  .hero-pills { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .pill { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border: 0.5px solid rgba(245,242,236,0.2); color: rgba(245,242,236,0.5); }
+  .pill.active { border-color: var(--gold); color: var(--gold); }
+  /* PLAYER CARDS */
+  .content { max-width: 1200px; margin: 0 auto; padding: 5rem; }
+  .player-section { margin-bottom: 6rem; padding-top: 4rem; border-top: 0.5px solid var(--border); }
+  .player-section:first-child { border-top: none; padding-top: 0; }
+  .player-header { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; margin-bottom: 3rem; }
+  .ph-league { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+  .ph-league::before { content: ''; display: block; width: 20px; height: 0.5px; background: var(--gold); }
+  .ph-name { font-family: var(--serif); font-size: clamp(36px, 4vw, 54px); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; }
+  .ph-name em { font-style: italic; color: var(--gold); }
+  .ph-sub { font-size: 15px; color: var(--muted); margin-top: 0.5rem; font-weight: 300; }
+  .ph-contract { background: var(--ink); color: var(--parchment); padding: 1.5rem 2rem; text-align: right; min-width: 180px; }
+  .pc-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,242,236,0.4); margin-bottom: 0.5rem; }
+  .pc-val { font-family: var(--serif); font-size: 34px; font-weight: 300; color: var(--gold-light); line-height: 1; }
+  /* PROPERTY GRID */
+  .prop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-bottom: 2.5rem; }
+  .prop-card { background: var(--parchment); padding: 2.5rem; }
+  .prop-card.featured { grid-column: span 2; background: #f0ede5; }
+  .prop-tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 0.75rem; }
+  .prop-name { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 0.25rem; }
+  .prop-loc { font-size: 13px; color: var(--muted); margin-bottom: 1.25rem; }
+  .prop-price { font-family: var(--serif); font-size: 38px; font-weight: 300; line-height: 1; margin-bottom: 1.25rem; letter-spacing: -0.02em; color: var(--gold); }
+  .prop-specs { display: flex; gap: 2rem; flex-wrap: wrap; border-top: 0.5px solid var(--border); padding-top: 1.25rem; margin-bottom: 1.25rem; }
+  .ps { display: flex; flex-direction: column; gap: 2px; }
+  .ps-label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .ps-val { font-size: 14px; font-weight: 500; }
+  .prop-story { font-size: 14px; color: var(--muted); line-height: 1.75; font-weight: 300; }
+  .prop-story strong { color: var(--ink); font-weight: 500; }
+  /* PLAYER CONTEXT */
+  .player-context { background: var(--ink); color: var(--parchment); padding: 2.5rem 3rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+  .ctx { display: flex; flex-direction: column; gap: 4px; }
+  .ctx-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,242,236,0.4); }
+  .ctx-val { font-size: 14px; color: var(--parchment); font-weight: 300; }
+  .ctx-val strong { color: var(--gold-light); font-weight: 500; }
+  /* NEWS BADGE */
+  .news-badge { background: rgba(184,151,42,0.1); border: 0.5px solid rgba(184,151,42,0.3); padding: 1rem 1.5rem; margin-bottom: 2rem; display: flex; gap: 1rem; align-items: flex-start; }
+  .nb-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 4px; }
+  .nb-text { font-size: 13px; color: var(--ink); line-height: 1.6; }
+  .nb-text strong { font-weight: 500; }
+  /* SECTION DIVIDER */
+  .section-div { text-align: center; padding: 2rem 0 4rem; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(14,13,11,0.2); }
+  /* RELATED */
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+  .related-card { background: var(--parchment); padding: 2rem; text-decoration: none; color: inherit; transition: background 0.2s; display: block; }
+  .related-card:hover { background: #efecea; }
+  .rt { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; font-weight: 500; }
+  .rn { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 0.25rem; }
+  .rd { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.6; }
+  .ra { font-size: 18px; color: var(--border); margin-top: 1.5rem; display: block; transition: color 0.2s, transform 0.2s; }
+  .related-card:hover .ra { color: var(--gold); transform: translate(4px,-4px); }
+  /* NEWSLETTER */
+  .newsletter { background: var(--gold); padding: 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .newsletter h2 { font-family: var(--serif); font-size: 38px; font-weight: 300; color: var(--ink); line-height: 1.1; }
+  .newsletter p { font-size: 15px; color: rgba(14,13,11,0.7); margin-top: 1rem; font-weight: 300; }
+  .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+  .newsletter-form input { background: rgba(14,13,11,0.1); border: 0.5px solid rgba(14,13,11,0.3); padding: 14px 18px; font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none; }
+  .newsletter-form button { background: var(--ink); color: var(--parchment); border: none; padding: 14px 28px; font-family: var(--sans); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; font-weight: 500; }
+  footer { background: var(--ink); color: var(--parchment); padding: 4rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; }
+  .footer-logo { font-family: var(--serif); font-size: 24px; font-weight: 300; margin-bottom: 1rem; }
+  .footer-logo span { color: var(--gold); font-style: italic; }
+  .footer-tagline { font-size: 13px; color: rgba(245,242,236,0.4); line-height: 1.7; font-weight: 300; }
+  .fct { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.5rem; }
+  .fl { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .fl a { font-size: 14px; color: rgba(245,242,236,0.6); text-decoration: none; font-weight: 300; }
+  .fl a:hover { color: var(--parchment); }
+  .footer-bottom { background: var(--ink); padding: 1.5rem 5rem; border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; }
+  .footer-bottom p { font-size: 12px; color: rgba(245,242,236,0.3); }
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; } .nav-links { display: none; }
+    .hero { padding: 100px 2rem 3rem; }
+    .content { padding: 3rem 2rem; }
+    .player-header { grid-template-columns: 1fr; }
+    .prop-grid { grid-template-columns: 1fr; }
+    .prop-card.featured { grid-column: span 1; }
+    .player-context, .related-grid { grid-template-columns: 1fr; }
+    .newsletter { grid-template-columns: 1fr; padding: 3rem 2rem; }
+    footer { grid-template-columns: 1fr; padding: 3rem 2rem; gap: 2rem; }
+    .footer-bottom { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Mansion<span>File</span></a>
+  <ul class="nav-links">
+    <li><a href="athlete-homes.html">Athlete Homes</a></li>
+    <li><a href="patrick-mahomes-house.html">Mahomes</a></li>
+    <li><a href="lebron-james-house.html">LeBron</a></li>
+    <li><a href="stephen-curry-house.html">Curry</a></li>
+  </ul>
+  <a href="#newsletter" class="nav-cta">Subscribe</a>
+</nav>
+
+<section class="hero">
+  <div class="breadcrumb"><a href="index.html">Home</a> <span>→</span> <a href="athlete-homes.html">Athlete Homes</a> <span>→</span> <span>MLB</span></div>
+  <h1 class="hero-title">Where baseball's <em>biggest stars</em> live</h1>
+  <p class="hero-sub">Shohei Ohtani's private La Cañada compound. Aaron Judge's Hudson River penthouse. Mike Trout's New Jersey roots. The complete real estate picture of MLB's highest-paid players.</p>
+  <div class="hero-pills">
+    <span class="pill active">MLB</span>
+    <span class="pill">Dodgers</span>
+    <span class="pill">Yankees</span>
+    <span class="pill">Angels</span>
+  </div>
+</section>
+
+<div class="content">
+
+  <!-- SHOHEI OHTANI -->
+  <div class="player-section" id="ohtani">
+    <div class="player-header">
+      <div>
+        <div class="ph-league">MLB · Los Angeles Dodgers · DH/Pitcher</div>
+        <h2 class="ph-name">Shohei <em>Ohtani</em></h2>
+        <p class="ph-sub">The greatest two-way player in baseball history. $700M Dodgers contract. 50/50 season. 3× MVP. Married Mamiko Tanaka (2024).</p>
+      </div>
+      <div class="ph-contract">
+        <div class="pc-label">Dodgers contract</div>
+        <div class="pc-val">$700M</div>
+      </div>
+    </div>
+
+    <div class="news-badge">
+      <div class="nb-dot"></div>
+      <p class="nb-text"><strong>Privacy incident (2024):</strong> Japanese media outlets Fuji TV and Nippon TV leaked Ohtani's home address and dispatched reporters to film the neighborhood, triggering a public scandal. Fuji TV's president issued a formal apology. Ohtani indicated he was considering selling — but as of 2026, property records show he still owns the home.</p>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card featured">
+        <div class="prop-tag">Primary residence · La Cañada Flintridge, CA</div>
+        <div class="prop-name">La Cañada Flintridge Estate</div>
+        <div class="prop-loc">La Cañada Flintridge, California — 13 miles from Dodger Stadium</div>
+        <div class="prop-price">$7.85M</div>
+        <div class="prop-specs">
+          <div class="ps"><div class="ps-label">Size</div><div class="ps-val">7,237 sq ft</div></div>
+          <div class="ps"><div class="ps-label">Bedrooms</div><div class="ps-val">5</div></div>
+          <div class="ps"><div class="ps-label">Bathrooms</div><div class="ps-val">6.5</div></div>
+          <div class="ps"><div class="ps-label">Built</div><div class="ps-val">2013</div></div>
+          <div class="ps"><div class="ps-label">Purchased from</div><div class="ps-val">Adam Carolla (radio host)</div></div>
+          <div class="ps"><div class="ps-label">Purchased</div><div class="ps-val">May 2024</div></div>
+        </div>
+        <p class="prop-story">
+          Ohtani purchased the estate in May 2024 — the same spring he married Mamiko Tanaka — under an LLC named "Decopin," after his Golden Retriever who went viral for high-fiving him at his 2023 AL MVP announcement. The home sits in La Cañada Flintridge, a quiet, wealthy suburb tucked into the Verdugo Mountain foothills north of Los Angeles. It's 13 miles and approximately 20 minutes from Dodger Stadium.
+          <br><br>
+          The three-story home features a private movie theater, basketball court (his wife Tanaka is a former professional basketball player), gym, sauna, outdoor kitchen, infinity pool, and a four-car garage. <strong>Ohtani paid $500K below the $8.35M asking price</strong> — the kind of disciplined negotiation you'd expect from a man who deferred $680M of his $700M contract. The surrounding property is filled with mature oak trees, providing natural privacy on the roughly 1-acre lot.
+        </p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-tag">Investment · Big Island, Hawaii</div>
+        <div class="prop-name">Big Island Oceanfront Parcel</div>
+        <div class="prop-loc">Big Island, Hawaii</div>
+        <div class="prop-price">$1.4M</div>
+        <div class="prop-specs">
+          <div class="ps"><div class="ps-label">Size</div><div class="ps-val">1.1 acres</div></div>
+          <div class="ps"><div class="ps-label">Type</div><div class="ps-val">Oceanfront land</div></div>
+          <div class="ps"><div class="ps-label">Purchased</div><div class="ps-val">April 2024</div></div>
+        </div>
+        <p class="prop-story">One month before buying the La Cañada mansion, Ohtani purchased a 1.1-acre oceanfront parcel on Hawaii's Big Island for $1.4M. A land investment suggesting future plans — possibly a custom build. No development announced as of 2026.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-tag">The contract context</div>
+        <div class="prop-name">$700M — 97% deferred</div>
+        <div class="prop-loc">Los Angeles Dodgers · 10 years</div>
+        <div class="prop-price">$2M/year now</div>
+        <div class="prop-specs">
+          <div class="ps"><div class="ps-label">Annual salary</div><div class="ps-val">$2M (deferred)</div></div>
+          <div class="ps"><div class="ps-label">Deferred payout</div><div class="ps-val">$680M (2034–2043)</div></div>
+          <div class="ps"><div class="ps-label">Endorsements</div><div class="ps-val">$40-65M/year</div></div>
+        </div>
+        <p class="prop-story">Ohtani receives just $2M per year during the contract. The remaining $680M is deferred to 2034–2043. His current lifestyle is funded by endorsements with New Balance, Porsche, Hugo Boss, Seiko, and others — totaling $40-65M annually. A $7.85M home is conservative for his actual income.</p>
+      </div>
+    </div>
+
+    <div class="player-context">
+      <div class="ctx"><div class="ctx-label">Net worth (2026)</div><div class="ctx-val"><strong>~$150M</strong> — endorsement-driven, contract deferred</div></div>
+      <div class="ctx"><div class="ctx-label">Real estate approach</div><div class="ctx-val">Private, practical, no excess. $7.85M home is understated for his profile.</div></div>
+      <div class="ctx"><div class="ctx-label">Most remarkable fact</div><div class="ctx-val">Holds the largest contract in North American sports history. His house costs less than some NBA players' first signings.</div></div>
+    </div>
+  </div>
+
+  <div class="section-div">· · ·</div>
+
+  <!-- AARON JUDGE -->
+  <div class="player-section" id="judge">
+    <div class="player-header">
+      <div>
+        <div class="ph-league">MLB · New York Yankees · Right Field · Captain</div>
+        <h2 class="ph-name">Aaron <em>Judge</em></h2>
+        <p class="ph-sub">Yankees captain. AL home run record (62, 2022). $360M contract. The face of New York baseball.</p>
+      </div>
+      <div class="ph-contract">
+        <div class="pc-label">Yankees contract</div>
+        <div class="pc-val">$360M</div>
+      </div>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card featured">
+        <div class="prop-tag">Primary residence · Manhattan, New York</div>
+        <div class="prop-name">The Cortland Penthouse</div>
+        <div class="prop-loc">555 West 22nd Street, Chelsea, Manhattan, NY</div>
+        <div class="prop-price">Est. ~$20M</div>
+        <div class="prop-specs">
+          <div class="ps"><div class="ps-label">Building</div><div class="ps-val">The Cortland (25 floors)</div></div>
+          <div class="ps"><div class="ps-label">Size</div><div class="ps-val">~7,000 sq ft</div></div>
+          <div class="ps"><div class="ps-label">Floor</div><div class="ps-val">Penthouse level</div></div>
+          <div class="ps"><div class="ps-label">Views</div><div class="ps-val">Hudson River panorama</div></div>
+          <div class="ps"><div class="ps-label">Architect</div><div class="ps-val">Robert A.M. Stern / Olson Kundig</div></div>
+          <div class="ps"><div class="ps-label">Purchased</div><div class="ps-val">Early 2023</div></div>
+        </div>
+        <p class="prop-story">
+          Fresh off signing his nine-year, $360M contract and being named the 16th captain in Yankees history, Judge purchased a penthouse at The Cortland — a brand-new 25-story luxury tower in Chelsea designed by two of architecture's most celebrated names: Robert A.M. Stern Architects and Olson Kundig.
+          <br><br>
+          The exact purchase price was not publicly disclosed. Two units on the 22nd floor sold for a combined $40M according to reports — whether Judge purchased one or both is unconfirmed. The 7,000 sq ft penthouse features floor-to-ceiling windows, high ceilings, and panoramic Hudson River views. <strong>Judge was reportedly "building it out" at time of purchase</strong> — customizing the space from its blank-canvas state. The building features nearly 20,000 sq ft of amenities including a 75-foot pool, spa, yoga studio, game room, and screening room that doubles as a performance space. Judge told reporters he and wife Samantha Bracksieck "came to the decision that was in our hearts, which is we belong in New York, we belong in this city."
+        </p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-tag">Spring training base · Tampa, FL</div>
+        <div class="prop-name">Tampa Residence</div>
+        <div class="prop-loc">Tampa, Florida — near Yankees spring training</div>
+        <div class="prop-price">Undisclosed</div>
+        <div class="prop-specs">
+          <div class="ps"><div class="ps-label">Purpose</div><div class="ps-val">Spring training base</div></div>
+          <div class="ps"><div class="ps-label">Use</div><div class="ps-val">Pre-season only</div></div>
+        </div>
+        <p class="prop-story">Judge maintains a Tampa residence close to Steinbrenner Field — the Yankees' spring training facility — used during the February-March pre-season period. A practical decision for a player with a 9-year commitment to New York.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-tag">The Cortland — the building</div>
+        <div class="prop-name">Chelsea's premier address</div>
+        <div class="prop-loc">West Chelsea, Manhattan</div>
+        <div class="prop-price">Units from $4M</div>
+        <div class="prop-specs">
+          <div class="ps"><div class="ps-label">Units</div><div class="ps-val">144 total</div></div>
+          <div class="ps"><div class="ps-label">Penthouse asking</div><div class="ps-val">$39.5M (PH25)</div></div>
+        </div>
+        <p class="prop-story">The Cortland is one of Manhattan's most celebrated new residential buildings. Two-bedrooms from $4M, four-bedrooms over $21M. The adjacent penthouse (PH25) was listed at $39.5M in 2024 — giving any neighbor of Judge's an easy point of reference for the building's price tier.</p>
+      </div>
+    </div>
+
+    <div class="player-context">
+      <div class="ctx"><div class="ctx-label">Contract</div><div class="ctx-val"><strong>$360M</strong> / 9 years — largest free agent deal in MLB history at signing</div></div>
+      <div class="ctx"><div class="ctx-label">Real estate approach</div><div class="ctx-val">All-in on New York. Penthouse in one of Manhattan's finest new buildings. Committed to the city.</div></div>
+      <div class="ctx"><div class="ctx-label">Most remarkable fact</div><div class="ctx-val">Chose a brand-new blank-canvas penthouse over an established celebrity mansion — building it out himself.</div></div>
+    </div>
+  </div>
+
+  <div class="section-div">· · ·</div>
+
+  <!-- MIKE TROUT -->
+  <div class="player-section" id="trout">
+    <div class="player-header">
+      <div>
+        <div class="ph-league">MLB · Los Angeles Angels · Center Field</div>
+        <h2 class="ph-name">Mike <em>Trout</em></h2>
+        <p class="ph-sub">3× AL MVP. Arguably the greatest player of his generation. $426M contract. New Jersey roots — never left.</p>
+      </div>
+      <div class="ph-contract">
+        <div class="pc-label">Angels contract</div>
+        <div class="pc-val">$426M</div>
+      </div>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card featured">
+        <div class="prop-tag">Primary residence · Millville, New Jersey</div>
+        <div class="prop-name">Millville Estate</div>
+        <div class="prop-loc">Millville, New Jersey — Trout's hometown</div>
+        <div class="prop-price">Custom build</div>
+        <div class="prop-specs">
+          <div class="ps"><div class="ps-label">Location</div><div class="ps-val">Millville, Cumberland County, NJ</div></div>
+          <div class="ps"><div class="ps-label">Setting</div><div class="ps-val">South Jersey, near Running Deer Golf Club</div></div>
+          <div class="ps"><div class="ps-label">Community</div><div class="ps-val">Trout's birthplace and hometown</div></div>
+          <div class="ps"><div class="ps-label">Approach</div><div class="ps-val">Custom-built on family land</div></div>
+        </div>
+        <p class="prop-story">
+          Mike Trout is baseball's most anomalous superstar. He plays in Los Angeles — one of the world's most glamorous cities — and he lives in Millville, New Jersey: a small city of 28,000 people in Cumberland County, South Jersey, where he was born and raised. He built a custom home there during his early career and has never left.
+          <br><br>
+          Trout grew up a Philadelphia Phillies fan in a baseball family (his father played four years of minor league ball). He attended Millville High School, where he became a legendary local figure. His attachment to South Jersey is genuine and consistent — <strong>he co-developed Trout National – The Reserve, an 18-hole private golf course in Vineland designed by Tiger Woods, which opened in April 2026,</strong> just minutes from his home. He has said repeatedly that Millville is home and always will be.
+        </p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-tag">Passion project · Vineland, NJ — Opened April 2026</div>
+        <div class="prop-name">Trout National – The Reserve</div>
+        <div class="prop-loc">Vineland, New Jersey — designed by Tiger Woods / TGR Design</div>
+        <div class="prop-price">Major investment</div>
+        <div class="prop-specs">
+          <div class="ps"><div class="ps-label">Designer</div><div class="ps-val">Tiger Woods / TGR Design</div></div>
+          <div class="ps"><div class="ps-label">Layout</div><div class="ps-val">Par-72 · 7,455 yards · 18 holes</div></div>
+          <div class="ps"><div class="ps-label">Site</div><div class="ps-val">Former silica sand mine · 280 acres</div></div>
+          <div class="ps"><div class="ps-label">Opened</div><div class="ps-val">April 2026 (member preview)</div></div>
+        </div>
+        <p class="prop-story">Trout National – The Reserve is a private destination golf club built on 280 acres of former silica sand mining land in Vineland — just minutes from where Trout grew up. The 18-hole, par-72 course was designed by Tiger Woods and his TGR Design firm, with construction completing in October 2024 and the course opening for member preview play in April 2026. Trout partnered with local developer John Ruga on the project. Five-star lodging, a restaurant, and a wedding chapel are included. "Getting Tiger to design it is crazy," Trout said. "If you had told me this would happen one day, I would have said you are crazy."</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-tag">The contrast</div>
+        <div class="prop-name">$426M contract, South Jersey home</div>
+        <div class="prop-loc">Millville, NJ</div>
+        <div class="prop-price">New Jersey values</div>
+        <div class="prop-specs">
+          <div class="ps"><div class="ps-label">Signed</div><div class="ps-val">2019 — 12 years</div></div>
+          <div class="ps"><div class="ps-label">Annual value</div><div class="ps-val">$35.5M/year</div></div>
+        </div>
+        <p class="prop-story">Trout's $426M contract was the largest in North American sports history when signed. He remains in the small New Jersey city where he grew up, sends custom cleats to Millville High School's baseball team, and still checks in on the program during spring training. The definition of staying grounded.</p>
+      </div>
+    </div>
+
+    <div class="player-context">
+      <div class="ctx"><div class="ctx-label">Contract</div><div class="ctx-val"><strong>$426M</strong> / 12 years — was the largest in North American sports history at signing</div></div>
+      <div class="ctx"><div class="ctx-label">Real estate approach</div><div class="ctx-val">Zero glamour. Lives in his hometown. Invests in the community where he grew up. Never left South Jersey.</div></div>
+      <div class="ctx"><div class="ctx-label">Most remarkable fact</div><div class="ctx-val">Holds a $426M contract and lives in a city of 28,000 people where he went to high school. Arguably the most grounded superstar in American sports.</div></div>
+    </div>
+  </div>
+
+  <!-- RELATED MLB CONTEXT -->
+  <div style="margin-top:4rem; padding-top:4rem; border-top:0.5px solid var(--border);">
+    <h2 style="font-family:var(--serif);font-size:32px;font-weight:300;margin-bottom:1.5rem;">More <em style="font-style:italic;color:var(--gold);">MLB players</em> coming soon</h2>
+    <p style="font-size:16px;color:var(--muted);font-weight:300;line-height:1.8;max-width:680px;margin-bottom:2rem;">We're building out individual pages for Juan Soto (Mets, $765M contract — the largest in North American sports history), Mookie Betts (Dodgers), Francisco Lindor (Mets), and others. Subscribe to the newsletter to be notified when new pages go live.</p>
+  </div>
+
+</div>
+
+<!-- RELATED SPORTS -->
+<div style="max-width:1200px;margin:0 auto;padding:0 5rem 5rem;">
+  <h2 style="font-family:var(--serif);font-size:32px;font-weight:300;margin-bottom:2rem;">More <em style="font-style:italic;color:var(--gold);">athlete homes</em></h2>
+  <div class="related-grid">
+    <a href="patrick-mahomes-house.html" class="related-card"><div class="rt">NFL · Kansas City Chiefs</div><div class="rn">Patrick Mahomes</div><div class="rd">Built an $8M compound with a 50-yard football field. Burglarized by a South American ring — suspects arrested May 2026.</div><span class="ra">↗</span></a>
+    <a href="lebron-james-house.html" class="related-card"><div class="rt">NBA · Los Angeles Lakers</div><div class="rn">LeBron James</div><div class="rd">Paid $36.75M for a historic Beverly Hills estate then demolished it to build two custom mansions worth $100M+.</div><span class="ra">↗</span></a>
+    <a href="stephen-curry-house.html" class="related-card"><div class="rt">NBA · Golden State Warriors</div><div class="rn">Stephen Curry</div><div class="rd">$30M Atherton family home and $50M Malibu investment with a fossil collection and a cabinet that transforms into a bar.</div><span class="ra">↗</span></a>
+  </div>
+</div>
+
+<section class="newsletter" id="newsletter">
+  <div><h2>The weekly filing.</h2><p>Every Friday — athlete estate news, record sales, and one property you won't believe exists.</p></div>
+  <div><form class="newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email address"><button type="submit">Join the file →</button></form></div>
+</section>
+
+<footer>
+  <div><div class="footer-logo">Mansion<span>File</span></div><p class="footer-tagline">The definitive record of extraordinary residential real estate. Every figure verified.</p></div>
+  <div><div class="fct">MLB Homes</div><ul class="fl"><li><a href="#ohtani">Shohei Ohtani</a></li><li><a href="#judge">Aaron Judge</a></li><li><a href="#trout">Mike Trout</a></li></ul></div>
+  <div><div class="fct">All Athletes</div><ul class="fl"><li><a href="athlete-homes.html">Hub page</a></li><li><a href="patrick-mahomes-house.html">Mahomes</a></li><li><a href="lebron-james-house.html">LeBron</a></li><li><a href="josh-allen-house.html">Allen</a></li><li><a href="sidney-crosby-house.html">Crosby</a></li></ul></div>
+</footer>
+<div class="footer-bottom"><p>© 2026 MansionFile. All rights reserved.</p><p>For informational purposes only. Not a brokerage.</p></div>
+</body>
+</html>
