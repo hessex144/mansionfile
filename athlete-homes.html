@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inside the Homes of the NFL, NBA & NHL's Biggest Stars — MansionFile</title>
+<meta name="description" content="A deep dive into the real estate of pro sports' biggest names. Patrick Mahomes' Kansas City compound, LeBron James' Beverly Hills rebuild, Stephen Curry's Atherton mansion, Josh Allen's Orchard Park estate, and Sidney Crosby's Pittsburgh home.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0d0b;
+    --parchment: #f5f2ec;
+    --gold: #b8972a;
+    --gold-light: #d4af55;
+    --muted: #6b6560;
+    --border: rgba(14,13,11,0.12);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--parchment); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem; height: 64px;
+    background: rgba(245,242,236,0.95); backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--parchment); background: var(--ink); padding: 9px 20px; text-decoration: none; }
+  .nav-cta:hover { background: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 60vh; padding: 120px 5rem 5rem;
+    background: var(--ink); color: var(--parchment);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.015) 40px,
+      rgba(255,255,255,0.015) 41px
+    );
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+  .breadcrumb { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,242,236,0.4); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 8px; }
+  .breadcrumb a { color: var(--gold); text-decoration: none; }
+  .hero-title {
+    font-family: var(--serif); font-size: clamp(42px, 6vw, 80px);
+    font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: 17px; font-weight: 300; color: rgba(245,242,236,0.65); line-height: 1.7; max-width: 620px; margin-bottom: 2rem; }
+  .hero-leagues {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .league-pill {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 6px 14px; border: 0.5px solid rgba(245,242,236,0.2);
+    color: rgba(245,242,236,0.6);
+  }
+  .league-pill.active { border-color: var(--gold); color: var(--gold); }
+
+  /* ATHLETE CARDS */
+  .content { max-width: 1200px; margin: 0 auto; padding: 5rem; }
+
+  .athlete-card {
+    margin-bottom: 6rem;
+    border-top: 0.5px solid var(--border);
+    padding-top: 4rem;
+  }
+  .athlete-card:first-child { border-top: none; padding-top: 0; }
+
+  .athlete-header {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 2rem; align-items: start; margin-bottom: 3rem;
+  }
+  .athlete-league {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .athlete-league::before { content: ''; display: block; width: 20px; height: 0.5px; background: var(--gold); }
+  .athlete-name {
+    font-family: var(--serif); font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+  }
+  .athlete-name em { font-style: italic; color: var(--gold); }
+  .athlete-title { font-size: 15px; color: var(--muted); margin-top: 0.5rem; font-weight: 300; }
+  .athlete-portfolio-val {
+    text-align: right;
+    padding: 1.5rem 2rem;
+    background: var(--ink); color: var(--parchment);
+    min-width: 200px;
+  }
+  .portfolio-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,242,236,0.5); margin-bottom: 0.5rem; }
+  .portfolio-val { font-family: var(--serif); font-size: 38px; font-weight: 300; line-height: 1; color: var(--gold-light); }
+
+  /* PROPERTY GRID */
+  .property-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-bottom: 2.5rem; }
+  .property-card { background: var(--parchment); padding: 2.5rem; }
+  .property-card.featured { grid-column: span 2; background: #f0ede5; }
+  .property-tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
+  .property-name { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 0.25rem; }
+  .property-location { font-size: 13px; color: var(--muted); margin-bottom: 1.5rem; }
+  .property-price { font-family: var(--serif); font-size: 42px; font-weight: 300; line-height: 1; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+  .property-specs { display: flex; gap: 2rem; flex-wrap: wrap; border-top: 0.5px solid var(--border); padding-top: 1.5rem; margin-bottom: 1.5rem; }
+  .spec { display: flex; flex-direction: column; gap: 3px; }
+  .spec-label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .spec-val { font-size: 15px; font-weight: 500; color: var(--ink); }
+  .property-story { font-size: 14px; color: var(--muted); line-height: 1.75; font-weight: 300; }
+  .property-story strong { color: var(--ink); font-weight: 500; }
+  .view-link {
+    display: inline-block; margin-top: 1.25rem;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none; border-bottom: 0.5px solid var(--gold);
+    padding-bottom: 1px; transition: opacity 0.2s;
+  }
+  .view-link:hover { opacity: 0.7; }
+
+  /* ATHLETE CONTEXT */
+  .athlete-context {
+    background: var(--ink); color: var(--parchment);
+    padding: 2.5rem 3rem;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .context-item { display: flex; flex-direction: column; gap: 4px; }
+  .context-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,242,236,0.4); }
+  .context-val { font-size: 15px; color: var(--parchment); font-weight: 300; }
+  .context-val strong { color: var(--gold-light); font-weight: 500; }
+
+  /* DIVIDER */
+  .section-divider {
+    text-align: center; padding: 2rem 0 4rem;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(14,13,11,0.2);
+  }
+
+  /* NEWSLETTER */
+  .newsletter { background: var(--gold); padding: 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .newsletter h2 { font-family: var(--serif); font-size: 42px; font-weight: 300; color: var(--ink); line-height: 1.1; }
+  .newsletter p { font-size: 15px; color: rgba(14,13,11,0.7); margin-top: 1rem; font-weight: 300; line-height: 1.7; }
+  .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+  .newsletter-form input { background: rgba(14,13,11,0.1); border: 0.5px solid rgba(14,13,11,0.3); padding: 14px 18px; font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none; }
+  .newsletter-form input::placeholder { color: rgba(14,13,11,0.5); }
+  .newsletter-form button { background: var(--ink); color: var(--parchment); border: none; padding: 14px 28px; font-family: var(--sans); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; font-weight: 500; }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: var(--parchment); padding: 4rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; }
+  .footer-logo { font-family: var(--serif); font-size: 24px; font-weight: 300; margin-bottom: 1rem; }
+  .footer-logo span { color: var(--gold); font-style: italic; }
+  .footer-tagline { font-size: 13px; color: rgba(245,242,236,0.4); line-height: 1.7; font-weight: 300; }
+  .footer-col-title { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.5rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .footer-links a { font-size: 14px; color: rgba(245,242,236,0.6); text-decoration: none; transition: color 0.2s; font-weight: 300; }
+  .footer-links a:hover { color: var(--parchment); }
+  .footer-bottom { background: var(--ink); padding: 1.5rem 5rem; border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; }
+  .footer-bottom p { font-size: 12px; color: rgba(245,242,236,0.3); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 2rem 3rem; }
+    .content { padding: 3rem 2rem; }
+    .athlete-header { grid-template-columns: 1fr; }
+    .athlete-portfolio-val { text-align: left; }
+    .property-grid { grid-template-columns: 1fr; }
+    .property-card.featured { grid-column: span 1; }
+    .athlete-context { grid-template-columns: 1fr; }
+    .newsletter { grid-template-columns: 1fr; padding: 3rem 2rem; }
+    footer { grid-template-columns: 1fr; padding: 3rem 2rem; gap: 2rem; }
+    .footer-bottom { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Mansion<span>File</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Most Expensive</a></li>
+    <li><a href="#" style="color:var(--gold);">Athlete Homes</a></li>
+    <li><a href="#">Record Sales</a></li>
+    <li><a href="#">Unique Properties</a></li>
+    <li><a href="#">By State</a></li>
+  </ul>
+  <a href="#newsletter" class="nav-cta">Subscribe</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>→</span> <span>Athlete Homes</span></div>
+    <h1 class="hero-title">Where the <em>stars</em> live</h1>
+    <p class="hero-sub">Inside the real estate portfolios of pro sports' biggest names — the compounds they built from scratch, the mansions they tore down and rebuilt, and the quiet choices that say everything about who they really are.</p>
+    <div class="hero-leagues">
+      <span class="league-pill active">NFL</span>
+      <span class="league-pill active">NBA</span>
+      <span class="league-pill active">NHL</span>
+      <span class="league-pill">More coming</span>
+    </div>
+  </div>
+</section>
+
+<div class="content">
+
+  <!-- PATRICK MAHOMES -->
+  <div class="athlete-card" id="mahomes">
+    <div class="athlete-header">
+      <div>
+        <div class="athlete-league">NFL · Kansas City Chiefs · Quarterback</div>
+        <h2 class="athlete-name">Patrick <em>Mahomes</em></h2>
+        <p class="athlete-title">3× Super Bowl Champion · $450M contract · The face of the modern NFL</p>
+      </div>
+      <div class="athlete-portfolio-val">
+        <div class="portfolio-label">Estimated portfolio</div>
+        <div class="portfolio-val">$12M+</div>
+      </div>
+    </div>
+
+    <div class="property-grid">
+      <div class="property-card featured">
+        <div class="property-tag">Primary residence · Loch Lloyd, MO</div>
+        <div class="property-name">The Spyglass Compound</div>
+        <div class="property-location">16001 Spyglass Ct, Belton, MO — Loch Lloyd gated community</div>
+        <div class="property-price">~$8M</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Land</div><div class="spec-val">8 acres</div></div>
+          <div class="spec"><div class="spec-label">Size</div><div class="spec-val">~8,000 sq ft</div></div>
+          <div class="spec"><div class="spec-label">Bedrooms</div><div class="spec-val">7</div></div>
+          <div class="spec"><div class="spec-label">Completed</div><div class="spec-val">2023</div></div>
+          <div class="spec"><div class="spec-label">Land purchased</div><div class="spec-val">$400K (2020)</div></div>
+        </div>
+        <p class="property-story">
+          Mahomes bought 8 acres of vacant land in Loch Lloyd — a gated community 20 miles south of Arrowhead Stadium — for $400,000 in 2020 and spent three years building his dream compound from scratch. He and Brittany finally moved in during 2023.
+          <br><br>
+          The estate is less a house than an athlete's private paradise. <strong>A 50-yard football field with "Mahomes" painted in the end zone</strong> takes center stage. There's a par-three golf hole with a bunker and putting green, a custom pool with swim-up bar and water slide, a private fishing pond, a state-of-the-art gym, a movie theater, and a wine room. In October 2024, the compound was burglarized while Mahomes was traveling — prompting a significant security overhaul.
+        </p>
+        <a href="https://www.zillow.com/homes/Loch-Lloyd-MO_rb/" target="_blank" rel="noopener" class="view-link">View Loch Lloyd listings →</a>
+      </div>
+
+      <div class="property-card">
+        <div class="property-tag">Texas retreat · Westlake, TX</div>
+        <div class="property-name">Westlake Farmhouse</div>
+        <div class="property-location">Westlake, Texas</div>
+        <div class="property-price">$3.37M</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Size</div><div class="spec-val">7,844 sq ft</div></div>
+          <div class="spec"><div class="spec-label">Purchased</div><div class="spec-val">2020</div></div>
+        </div>
+        <p class="property-story">A modern farmhouse-style estate in Westlake with views of Vaquero Golf Club. Purchased for $3.37M after originally being listed for $4.26M — Mahomes bought it at a discount. Features high ceilings, floating staircase, infinity pool, wet bar, wine room, and game room.</p>
+      </div>
+
+      <div class="property-card">
+        <div class="property-tag">Early career · Kansas City, MO</div>
+        <div class="property-name">Mission Hills Mansion</div>
+        <div class="property-location">Kansas City, Missouri</div>
+        <div class="property-price">$1.8M → sold $2.9M</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Size</div><div class="spec-val">4,300 sq ft</div></div>
+          <div class="spec"><div class="spec-label">Purchased</div><div class="spec-val">2018</div></div>
+        </div>
+        <p class="property-story">Mahomes' first serious home — a 3-bedroom, 4-bath mansion with a rose garden, pool, spa, wine room, and miniature golf. He bought it in 2018 for $1.8M, upgraded it extensively, then listed it for $2.9M once the Spyglass compound was complete.</p>
+      </div>
+    </div>
+
+    <div class="athlete-context">
+      <div class="context-item">
+        <div class="context-label">Contract</div>
+        <div class="context-val"><strong>$450M</strong> / 10 years with the Chiefs</div>
+      </div>
+      <div class="context-item">
+        <div class="context-label">Real estate approach</div>
+        <div class="context-val">Built from scratch. Personalized to the extreme. Every amenity an athlete could want.</div>
+      </div>
+      <div class="context-item">
+        <div class="context-label">Most remarkable feature</div>
+        <div class="context-val">A 50-yard football field with his name in the end zone — inside his own backyard.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider">· · ·</div>
+
+  <!-- LEBRON JAMES -->
+  <div class="athlete-card" id="lebron">
+    <div class="athlete-header">
+      <div>
+        <div class="athlete-league">NBA · Los Angeles Lakers · Forward</div>
+        <h2 class="athlete-name">LeBron <em>James</em></h2>
+        <p class="athlete-title">4× NBA Champion · Billionaire athlete · Real estate as legacy building</p>
+      </div>
+      <div class="athlete-portfolio-val">
+        <div class="portfolio-label">Beverly Hills property alone</div>
+        <div class="portfolio-val">$100M+</div>
+      </div>
+    </div>
+
+    <div class="property-grid">
+      <div class="property-card featured">
+        <div class="property-tag">Crown jewel · Beverly Hills, CA — Under construction</div>
+        <div class="property-name">9955 Beverly Grove Drive</div>
+        <div class="property-location">Beverly Hills Post Office (BHPO), Los Angeles, CA 90210</div>
+        <div class="property-price">$36.75M → est. $100M+</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Land</div><div class="spec-val">2.72 acres</div></div>
+          <div class="spec"><div class="spec-label">New build size</div><div class="spec-val">~22,000 sq ft (2 homes)</div></div>
+          <div class="spec"><div class="spec-label">Purchased</div><div class="spec-val">September 2020</div></div>
+          <div class="spec"><div class="spec-label">Demolished</div><div class="spec-val">2023</div></div>
+          <div class="spec"><div class="spec-label">Expected value</div><div class="spec-val">$100M+</div></div>
+        </div>
+        <p class="property-story">
+          LeBron paid $36.75M in 2020 for a historic Beverly Hills hilltop estate — a 1930s Mediterranean mansion that had been owned by soap opera legends Bill and Lee Phillip Bell, and before them was leased by Howard Hughes to Katharine Hepburn.
+          <br><br>
+          In a move that stunned even Beverly Hills insiders, <strong>LeBron demolished the entire original mansion in 2023</strong> and is building two brand-new custom homes on the 2.72-acre lot. The primary mansion will be approximately 16,000 sq ft; a second home will be 6,550 sq ft. When complete, the compound is expected to be worth over $100M — nearly 3× what he paid for the land. Planned features include an infinity pool, outdoor kitchen, basement theater, spa, solar panels, and a private guard house.
+        </p>
+        <a href="https://www.zillow.com/homedetails/9955-Beverly-Grove-Dr-Beverly-Hills-CA-90210/20459082_zpid/" target="_blank" rel="noopener" class="view-link">View on Zillow →</a>
+      </div>
+
+      <div class="property-card">
+        <div class="property-tag">Brentwood, CA</div>
+        <div class="property-name">Brentwood Estate</div>
+        <div class="property-location">Brentwood, Los Angeles, CA</div>
+        <div class="property-price">$23.5M</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Size</div><div class="spec-val">15,846 sq ft</div></div>
+          <div class="spec"><div class="spec-label">Purchased</div><div class="spec-val">2017</div></div>
+        </div>
+        <p class="property-story">LeBron's Brentwood property — purchased for $23.5M in 2017 — offers ocean views from downtown LA and serves as part of his broader Los Angeles real estate footprint.</p>
+      </div>
+
+      <div class="property-card">
+        <div class="property-tag">Ohio roots</div>
+        <div class="property-name">Akron/Bath Township Estate</div>
+        <div class="property-location">Bath Township, Ohio</div>
+        <div class="property-price">Est. $9.2M</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Size</div><div class="spec-val">30,000+ sq ft</div></div>
+          <div class="spec"><div class="spec-label">Note</div><div class="spec-val">Home state roots</div></div>
+        </div>
+        <p class="property-story">LeBron maintains a connection to his Ohio roots through a massive Bath Township estate near Akron — a reminder of where he grew up and a symbol of how far he's come.</p>
+      </div>
+    </div>
+
+    <div class="athlete-context">
+      <div class="context-item">
+        <div class="context-label">Net worth</div>
+        <div class="context-val"><strong>$1B+</strong> — first active NBA player to reach billionaire status</div>
+      </div>
+      <div class="context-item">
+        <div class="context-label">Real estate approach</div>
+        <div class="context-val">Legacy plays. Tears down and rebuilds. Treats properties as long-term generational assets.</div>
+      </div>
+      <div class="context-item">
+        <div class="context-label">Most remarkable move</div>
+        <div class="context-val">Buying a $36.75M historic mansion then demolishing it entirely to build two custom homes from scratch.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider">· · ·</div>
+
+  <!-- STEPH CURRY -->
+  <div class="athlete-card" id="curry">
+    <div class="athlete-header">
+      <div>
+        <div class="athlete-league">NBA · Golden State Warriors · Guard</div>
+        <h2 class="athlete-name">Stephen <em>Curry</em></h2>
+        <p class="athlete-title">4× NBA Champion · NBA's all-time 3-point leader · Silicon Valley neighbor</p>
+      </div>
+      <div class="athlete-portfolio-val">
+        <div class="portfolio-label">Current home value</div>
+        <div class="portfolio-val">$30M+</div>
+      </div>
+    </div>
+
+    <div class="property-grid">
+      <div class="property-card featured">
+        <div class="property-tag">Primary residence · Atherton, CA — America's wealthiest zip code</div>
+        <div class="property-name">Lloyden Park Estate</div>
+        <div class="property-location">Atherton, California 94027</div>
+        <div class="property-price">~$30M</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Land</div><div class="spec-val">1.7 acres</div></div>
+          <div class="spec"><div class="spec-label">Size</div><div class="spec-val">17,700 sq ft</div></div>
+          <div class="spec"><div class="spec-label">Bedrooms</div><div class="spec-val">7</div></div>
+          <div class="spec"><div class="spec-label">Purchased</div><div class="spec-val">December 2020</div></div>
+          <div class="spec"><div class="spec-label">Zip code rank</div><div class="spec-val">America's wealthiest</div></div>
+        </div>
+        <p class="property-story">
+          Curry lives in Atherton — zip code 94027, consistently ranked the most expensive in the United States, home to tech billionaires, Stanford professors, and venture capital royalty. His estate sits in the Lloyden Park neighborhood on 1.7 acres.
+          <br><br>
+          The 17,700 sq ft modern Mediterranean home was purchased quietly in December 2020 through an LLC for approximately $30M. <strong>Curry had previously owned and sold a smaller Atherton home for $31.15M</strong> — making him one of the few athletes who has transacted twice in the $30M+ range in the same zip code. The Bay Area real estate market means his properties are surrounded by some of the most valuable land in the world.
+        </p>
+        <a href="https://www.zillow.com/atherton-ca/" target="_blank" rel="noopener" class="view-link">View Atherton listings →</a>
+      </div>
+
+      <div class="property-card">
+        <div class="property-tag">Sold 2021 · Atherton, CA</div>
+        <div class="property-name">West Atherton Home</div>
+        <div class="property-location">West Atherton, California</div>
+        <div class="property-price">Sold $31.15M</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Size</div><div class="spec-val">7,500 sq ft</div></div>
+          <div class="spec"><div class="spec-label">Sold to</div><div class="spec-val">Singapore billionaire Forrest Li</div></div>
+        </div>
+        <p class="property-story">Curry sold his first Atherton home for $31.15M in September 2021 — just $150,000 more than he paid in 2019. The buyer was Forrest Li, the Singapore billionaire founder of Sea (Free Fire's parent company).</p>
+      </div>
+
+      <div class="property-card">
+        <div class="property-tag">Context</div>
+        <div class="property-name">Atherton, California</div>
+        <div class="property-location">San Francisco Peninsula</div>
+        <div class="property-price">Median: $7M+</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Zip code</div><div class="spec-val">94027 — #1 in US</div></div>
+          <div class="spec"><div class="spec-label">Neighbors</div><div class="spec-val">Tech billionaires, VCs</div></div>
+        </div>
+        <p class="property-story">Atherton's median home price exceeds $7M. Curry's neighbors include some of Silicon Valley's most powerful figures. It's an unusual choice for an NBA star — most choose LA or Miami. Curry chose the tech world's backyard.</p>
+      </div>
+    </div>
+
+    <div class="athlete-context">
+      <div class="context-item">
+        <div class="context-label">Warriors contract</div>
+        <div class="context-val"><strong>$201M</strong> — signed in 2017, remains Warriors' franchise cornerstone</div>
+      </div>
+      <div class="context-item">
+        <div class="context-label">Real estate approach</div>
+        <div class="context-val">Quietly buys off-market. Stays rooted in the Bay Area despite LA's pull on most NBA stars.</div>
+      </div>
+      <div class="context-item">
+        <div class="context-label">Most remarkable fact</div>
+        <div class="context-val">Has transacted twice in Atherton's $30M+ range — rarer than a half-court buzzer beater.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider">· · ·</div>
+
+  <!-- JOSH ALLEN -->
+  <div class="athlete-card" id="allen">
+    <div class="athlete-header">
+      <div>
+        <div class="athlete-league">NFL · Buffalo Bills · Quarterback</div>
+        <h2 class="athlete-name">Josh <em>Allen</em></h2>
+        <p class="athlete-title">Bills franchise QB · Married Hailee Steinfeld (2025) · $258M contract</p>
+      </div>
+      <div class="athlete-portfolio-val">
+        <div class="portfolio-label">Portfolio value</div>
+        <div class="portfolio-val">$12M+</div>
+      </div>
+    </div>
+
+    <div class="property-grid">
+      <div class="property-card featured">
+        <div class="property-tag">Primary residence · Orchard Park, NY — Built from scratch</div>
+        <div class="property-name">The Orchard Park Compound</div>
+        <div class="property-location">Newton Rd, Orchard Park, NY 14127 — 10 min from Highmark Stadium</div>
+        <div class="property-price">~$4M</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Land</div><div class="spec-val">31 acres</div></div>
+          <div class="spec"><div class="spec-label">Size</div><div class="spec-val">5,668 sq ft</div></div>
+          <div class="spec"><div class="spec-label">Bedrooms</div><div class="spec-val">5</div></div>
+          <div class="spec"><div class="spec-label">Land purchased</div><div class="spec-val">$500K (2021)</div></div>
+          <div class="spec"><div class="spec-label">Completed</div><div class="spec-val">2022</div></div>
+        </div>
+        <p class="property-story">
+          In a move that defines his personality, Josh Allen bought <strong>31 acres of land next to his existing Orchard Park home for just $500,000 in 2021</strong> — then built a custom compound from scratch. For a quarterback earning $43M per year, it's a shockingly practical and rooted choice.
+          <br><br>
+          The estate is 10 minutes from Highmark Stadium and built for both athletic performance and family life. Features include an infinity pool, private pond, outdoor kitchen, tennis court, a manicured golf hole, a golf simulator, a home theater, and a full gym. The basement entertainment suite has a full bar. Allen married actress Hailee Steinfeld in 2025 and subsequently delisted his California beach house — signaling his long-term commitment to Buffalo.
+        </p>
+        <a href="https://www.zillow.com/orchard-park-ny/" target="_blank" rel="noopener" class="view-link">View Orchard Park listings →</a>
+      </div>
+
+      <div class="property-card">
+        <div class="property-tag">California · Dana Point</div>
+        <div class="property-name">Dana Point Beach House</div>
+        <div class="property-location">Dana Point, California</div>
+        <div class="property-price">$7.2M</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Size</div><div class="spec-val">2,808 sq ft</div></div>
+          <div class="spec"><div class="spec-label">Status</div><div class="spec-val">Delisted 2026</div></div>
+        </div>
+        <p class="property-story">Allen bought a $7.2M beachfront home in Dana Point, California in 2023 — then listed it for $8.5M after marrying Steinfeld in 2025. It was delisted without selling, signaling a pivot toward permanent roots in Buffalo.</p>
+      </div>
+
+      <div class="property-card">
+        <div class="property-tag">First home · Orchard Park, NY</div>
+        <div class="property-name">Original Orchard Park Home</div>
+        <div class="property-location">6069 Newton Rd, Orchard Park, NY</div>
+        <div class="property-price">$659K</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Size</div><div class="spec-val">3,600 sq ft</div></div>
+          <div class="spec"><div class="spec-label">Purchased</div><div class="spec-val">2018 (draft year)</div></div>
+        </div>
+        <p class="property-story">The house that started it all. Allen bought his first home in 2018 for $659,900 — the year he was drafted. Five minutes from the stadium. 15 acres. A pool and a fireplace. For a franchise QB earning $43M/year, it remains shockingly humble.</p>
+      </div>
+    </div>
+
+    <div class="athlete-context">
+      <div class="context-item">
+        <div class="context-label">Contract</div>
+        <div class="context-val"><strong>$258M</strong> / 6 years — $43M annually through 2028</div>
+      </div>
+      <div class="context-item">
+        <div class="context-label">Real estate approach</div>
+        <div class="context-val">Bought land, built his own. Stayed rooted in Buffalo. Prioritizes function over flash.</div>
+      </div>
+      <div class="context-item">
+        <div class="context-label">Most remarkable fact</div>
+        <div class="context-val">His first NFL home cost $659K. His land for the compound cost $500K. Franchise QB, farmer's mindset.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider">· · ·</div>
+
+  <!-- SIDNEY CROSBY -->
+  <div class="athlete-card" id="crosby">
+    <div class="athlete-header">
+      <div>
+        <div class="athlete-league">NHL · Pittsburgh Penguins · Center</div>
+        <h2 class="athlete-name">Sidney <em>Crosby</em></h2>
+        <p class="athlete-title">3× Stanley Cup Champion · "Sid the Kid" · The face of modern hockey</p>
+      </div>
+      <div class="athlete-portfolio-val">
+        <div class="portfolio-label">Primary home value</div>
+        <div class="portfolio-val">$4M+</div>
+      </div>
+    </div>
+
+    <div class="property-grid">
+      <div class="property-card featured">
+        <div class="property-tag">Primary residence · Sewickley, PA — Custom built</div>
+        <div class="property-name">The Sewickley Estate</div>
+        <div class="property-location">Creek Dr, Sewickley, PA 15143 — 12 miles from Pittsburgh</div>
+        <div class="property-price">~$4.1M</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Size</div><div class="spec-val">10,642 sq ft</div></div>
+          <div class="spec"><div class="spec-label">Bedrooms</div><div class="spec-val">5</div></div>
+          <div class="spec"><div class="spec-label">Fireplaces</div><div class="spec-val">3</div></div>
+          <div class="spec"><div class="spec-label">Land purchased</div><div class="spec-val">$800K (2011)</div></div>
+          <div class="spec"><div class="spec-label">Style</div><div class="spec-val">Colonial, custom built</div></div>
+        </div>
+        <p class="property-story">
+          Crosby bought the Sewickley land for $800,000 in 2011 — the same year he sold his previous Pittsburgh farmhouse to Penguins president David Morehouse — and built his current custom Colonial-style estate from scratch.
+          <br><br>
+          At 10,642 sq ft, it's a large but understated home for one of hockey's greatest players. <strong>Crosby is famously private</strong> — he kept the same Sewickley address for over a decade, rarely photographed outside it. Three fireplaces, built-in bookshelves, an elegant stone walkway, and a finished basement. The property sits in Sewickley's most exclusive enclave, about 12 miles from PPG Paints Arena.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <div class="property-tag">Summer home · Nova Scotia, Canada</div>
+        <div class="property-name">Cole Harbour Lakefront</div>
+        <div class="property-location">Near Cole Harbour, Nova Scotia</div>
+        <div class="property-price">Est. $3M+</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">Setting</div><div class="spec-val">Grand Lake waterfront</div></div>
+          <div class="spec"><div class="spec-label">Significance</div><div class="spec-val">Hometown roots</div></div>
+        </div>
+        <p class="property-story">Crosby returns every offseason to Cole Harbour, Nova Scotia — the small town where he grew up and first picked up a hockey stick. His lakefront summer property is a deliberate act of staying grounded despite becoming one of sport's biggest global stars.</p>
+      </div>
+
+      <div class="property-card">
+        <div class="property-tag">Context · The Crosby approach</div>
+        <div class="property-name">Loyalty over luxury</div>
+        <div class="property-location">Pittsburgh, PA</div>
+        <div class="property-price">One city, 15 years</div>
+        <div class="property-specs">
+          <div class="spec"><div class="spec-label">NHL seasons in Pittsburgh</div><div class="spec-val">20+</div></div>
+          <div class="spec"><div class="spec-label">Contract extensions signed</div><div class="spec-val">Multiple hometown discounts</div></div>
+        </div>
+        <p class="property-story">Unlike peers who chase real estate portfolios across multiple cities, Crosby has maintained a single Pittsburgh home and a Nova Scotia retreat for his entire career. His real estate tells the same story as his career: uncommonly loyal, uncommonly consistent.</p>
+      </div>
+    </div>
+
+    <div class="athlete-context">
+      <div class="context-item">
+        <div class="context-label">Career earnings</div>
+        <div class="context-val"><strong>$130M+</strong> in NHL salary alone over 20 seasons</div>
+      </div>
+      <div class="context-item">
+        <div class="context-label">Real estate approach</div>
+        <div class="context-val">One city, one home. No flashy portfolio. Loyalty and privacy above all else.</div>
+      </div>
+      <div class="context-item">
+        <div class="context-label">Most remarkable fact</div>
+        <div class="context-val">One of sport's highest earners. Lives in the same Sewickley estate he built in 2011. Hasn't moved once.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- NEWSLETTER -->
+<section class="newsletter" id="newsletter">
+  <div>
+    <h2>The weekly filing.</h2>
+    <p>One email, every Friday. The week's most remarkable listing, athlete estate news, and one property you need to see to believe.</p>
+  </div>
+  <div>
+    <form class="newsletter-form" onsubmit="return false;">
+      <input type="email" placeholder="Your email address">
+      <button type="submit">Join the file →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Mansion<span>File</span></div>
+    <p class="footer-tagline">The definitive record of extraordinary residential real estate. Built for the curious.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Athletes</div>
+    <ul class="footer-links">
+      <li><a href="#mahomes">Patrick Mahomes</a></li>
+      <li><a href="#lebron">LeBron James</a></li>
+      <li><a href="#curry">Stephen Curry</a></li>
+      <li><a href="#allen">Josh Allen</a></li>
+      <li><a href="#crosby">Sidney Crosby</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Explore</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Homepage</a></li>
+      <li><a href="record-home-sales-by-state.html">Record Sales</a></li>
+      <li><a href="#">Most Expensive</a></li>
+      <li><a href="#">Unique Properties</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 MansionFile. All rights reserved.</p>
+  <p>For informational purposes only. Not a brokerage.</p>
+</div>
+
+</body>
+</html>
