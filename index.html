@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MansionFile — The World's Most Remarkable Homes</title>
+<meta name="description" content="The definitive database of extraordinary residential real estate. Most expensive homes, celebrity estates, record-breaking sales, and one-of-a-kind properties.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0d0b;
+    --parchment: #f5f2ec;
+    --gold: #b8972a;
+    --gold-light: #d4af55;
+    --muted: #6b6560;
+    --border: rgba(14,13,11,0.12);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--parchment);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(245,242,236,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px; font-weight: 400; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--parchment);
+    background: var(--ink); border: none; padding: 9px 20px;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 64px;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 6rem 5rem;
+    border-right: 0.5px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 32px; height: 0.5px; background: var(--gold);
+  }
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(52px, 6vw, 82px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 16px; font-weight: 300; color: var(--muted);
+    line-height: 1.8; max-width: 420px;
+    margin-bottom: 3rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; }
+  .btn-primary {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--parchment);
+    background: var(--ink); padding: 14px 28px;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold); }
+  .btn-ghost {
+    font-size: 12px; font-weight: 400; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; border-bottom: 0.5px solid var(--border);
+    padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+  .hero-right {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-stat {
+    padding: 3rem;
+    border-right: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-stat:nth-child(2) { border-right: none; }
+  .hero-stat:nth-child(3) { border-bottom: none; }
+  .hero-stat:nth-child(4) { border-right: none; border-bottom: none; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 52px; font-weight: 300;
+    line-height: 1; margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .stat-num span { color: var(--gold); font-style: italic; }
+  .stat-label {
+    font-size: 12px; font-weight: 400; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--ink); color: var(--parchment);
+    padding: 12px 0; overflow: hidden;
+    border-top: 0.5px solid rgba(255,255,255,0.1);
+    border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  }
+  .ticker-inner {
+    display: flex; gap: 0;
+    animation: ticker 30s linear infinite;
+    width: max-content;
+  }
+  .ticker-item {
+    white-space: nowrap;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0 3rem;
+    display: flex; align-items: center; gap: 1rem;
+    color: rgba(245,242,236,0.7);
+  }
+  .ticker-item strong { color: var(--gold-light); font-weight: 500; }
+  .ticker-dot {
+    width: 3px; height: 3px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* CATEGORIES */
+  .section { padding: 7rem 5rem; }
+  .section-header {
+    display: flex; align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 3.5rem;
+    border-bottom: 0.5px solid var(--border);
+    padding-bottom: 1.5rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 38px; font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-link {
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; border-bottom: 0.5px solid var(--border);
+    transition: color 0.2s;
+  }
+  .section-link:hover { color: var(--ink); }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1px;
+    background: var(--border);
+  }
+  .cat-card {
+    background: var(--parchment);
+    padding: 2.5rem;
+    cursor: pointer;
+    transition: background 0.25s;
+    text-decoration: none; color: inherit;
+    display: block;
+  }
+  .cat-card:hover { background: var(--ink); }
+  .cat-card:hover .cat-title { color: var(--parchment); }
+  .cat-card:hover .cat-desc { color: rgba(245,242,236,0.6); }
+  .cat-card:hover .cat-count { color: var(--gold-light); }
+  .cat-card:hover .cat-arrow { color: var(--gold); }
+  .cat-card.large { grid-row: span 2; }
+  .cat-count {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 1.5rem;
+    transition: color 0.25s;
+  }
+  .cat-title {
+    font-family: var(--serif);
+    font-size: 28px; font-weight: 400; line-height: 1.2;
+    margin-bottom: 1rem; transition: color 0.25s;
+  }
+  .cat-card.large .cat-title { font-size: 42px; }
+  .cat-desc {
+    font-size: 14px; color: var(--muted); line-height: 1.7;
+    font-weight: 300; transition: color 0.25s;
+  }
+  .cat-arrow {
+    display: block; margin-top: 2rem;
+    font-size: 20px; color: var(--border);
+    transition: color 0.25s, transform 0.2s;
+  }
+  .cat-card:hover .cat-arrow { transform: translate(4px, -4px); }
+
+  /* FEATURED LISTING */
+  .featured { background: var(--ink); color: var(--parchment); padding: 7rem 5rem; }
+  .featured .section-title { color: var(--parchment); }
+  .featured .section-link { color: rgba(245,242,236,0.5); border-color: rgba(245,242,236,0.2); }
+  .featured .section-link:hover { color: var(--parchment); }
+  .featured .section-header { border-color: rgba(255,255,255,0.12); }
+
+  .listings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    background: rgba(255,255,255,0.08);
+  }
+  .listing-card {
+    background: var(--ink);
+    padding: 2.5rem;
+    transition: background 0.25s;
+    cursor: pointer;
+    text-decoration: none; color: inherit;
+  }
+  .listing-card:hover { background: #1a1916; }
+  .listing-tag {
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .listing-tag::before {
+    content: ''; display: block; width: 20px; height: 0.5px; background: var(--gold);
+  }
+  .listing-price {
+    font-family: var(--serif);
+    font-size: 36px; font-weight: 300; line-height: 1;
+    margin-bottom: 0.75rem; letter-spacing: -0.01em;
+    color: var(--parchment);
+  }
+  .listing-name {
+    font-size: 14px; font-weight: 400; color: rgba(245,242,236,0.9);
+    margin-bottom: 0.5rem;
+  }
+  .listing-loc {
+    font-size: 12px; color: rgba(245,242,236,0.4);
+    letter-spacing: 0.04em;
+  }
+  .listing-meta {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid rgba(255,255,255,0.1);
+    display: flex; gap: 1.5rem;
+  }
+  .listing-spec {
+    font-size: 12px; color: rgba(245,242,236,0.5);
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .listing-spec strong {
+    font-size: 14px; color: var(--parchment); font-weight: 400;
+  }
+
+  /* PILLARS */
+  .pillars { padding: 7rem 5rem; }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 0.5px solid var(--border);
+  }
+  .pillar {
+    padding: 3rem;
+    border-right: 0.5px solid var(--border);
+    text-decoration: none; color: inherit;
+    transition: background 0.2s;
+    display: block;
+  }
+  .pillar:last-child { border-right: none; }
+  .pillar:hover { background: rgba(184,151,42,0.06); }
+  .pillar-num {
+    font-family: var(--serif);
+    font-size: 64px; font-weight: 300;
+    color: var(--border);
+    line-height: 1; margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .pillar-title {
+    font-family: var(--serif);
+    font-size: 22px; font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .pillar-desc {
+    font-size: 14px; color: var(--muted); line-height: 1.7; font-weight: 300;
+  }
+
+  /* NEWSLETTER */
+  .newsletter {
+    background: var(--gold);
+    padding: 6rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .newsletter-title {
+    font-family: var(--serif);
+    font-size: 48px; font-weight: 300; line-height: 1.1;
+    color: var(--ink);
+  }
+  .newsletter-sub {
+    font-size: 15px; color: rgba(14,13,11,0.7);
+    margin-top: 1rem; font-weight: 300; line-height: 1.7;
+  }
+  .newsletter-form { display: flex; flex-direction: column; gap: 12px; }
+  .newsletter-form input {
+    background: rgba(14,13,11,0.1);
+    border: 0.5px solid rgba(14,13,11,0.3);
+    padding: 14px 18px;
+    font-family: var(--sans);
+    font-size: 14px; color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .newsletter-form input::placeholder { color: rgba(14,13,11,0.5); }
+  .newsletter-form input:focus { border-color: var(--ink); }
+  .newsletter-form button {
+    background: var(--ink); color: var(--parchment);
+    border: none; padding: 14px 28px;
+    font-family: var(--sans);
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  .newsletter-form button:hover { opacity: 0.85; }
+  .newsletter-disclaimer {
+    font-size: 11px; color: rgba(14,13,11,0.5); margin-top: 4px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: var(--parchment);
+    padding: 5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    border-top: 0.5px solid rgba(255,255,255,0.1);
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 28px; font-weight: 300;
+    margin-bottom: 1rem; color: var(--parchment);
+  }
+  .footer-logo span { color: var(--gold); font-style: italic; }
+  .footer-tagline {
+    font-size: 13px; color: rgba(245,242,236,0.4);
+    line-height: 1.7; font-weight: 300; max-width: 240px;
+  }
+  .footer-col-title {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 1.5rem;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .footer-links a {
+    font-size: 14px; color: rgba(245,242,236,0.6);
+    text-decoration: none; transition: color 0.2s; font-weight: 300;
+  }
+  .footer-links a:hover { color: var(--parchment); }
+  .footer-bottom {
+    background: var(--ink);
+    padding: 1.5rem 5rem;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p {
+    font-size: 12px; color: rgba(245,242,236,0.3); letter-spacing: 0.04em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  .hero-headline { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-sub { animation: fadeUp 0.6s ease 0.2s both; }
+  .hero-actions { animation: fadeUp 0.6s ease 0.3s both; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 4rem 2rem; }
+    .section, .featured, .pillars, .newsletter, footer { padding: 4rem 2rem; }
+    .categories-grid { grid-template-columns: 1fr; }
+    .cat-card.large { grid-row: span 1; }
+    .listings-grid { grid-template-columns: 1fr; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .newsletter { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Mansion<span>File</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Most Expensive</a></li>
+    <li><a href="#">Celebrity Homes</a></li>
+    <li><a href="#">Record Sales</a></li>
+    <li><a href="#">Unique Properties</a></li>
+    <li><a href="#">By State</a></li>
+  </ul>
+  <a href="#newsletter" class="nav-cta">Subscribe</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">The property intelligence file</p>
+    <h1 class="hero-headline">The world's most <em>remarkable</em> homes.</h1>
+    <p class="hero-sub">From $250M Bel Air megamansions to cliffside castles and athlete compounds — MansionFile is the definitive record of extraordinary residential real estate.</p>
+    <div class="hero-actions">
+      <a href="#categories" class="btn-primary">Explore the file</a>
+      <a href="#listings" class="btn-ghost">See record sales</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="stat-num">$<span>295</span>M</div>
+      <div class="stat-label">Highest US listing ever</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num"><span>50</span>+</div>
+      <div class="stat-label">States covered</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num"><span>500</span>+</div>
+      <div class="stat-label">Properties filed</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num"><span>∞</span></div>
+      <div class="stat-label">Square feet of curiosity</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-item"><div class="ticker-dot"></div> <strong>$295M</strong> · The One, Bel Air — most expensive US listing in history</div>
+    <div class="ticker-item"><div class="ticker-dot"></div> <strong>$36.75M</strong> · LeBron James acquires Beverly Hills estate</div>
+    <div class="ticker-item"><div class="ticker-dot"></div> <strong>$188M</strong> · Ken Griffin sets Palm Beach record</div>
+    <div class="ticker-item"><div class="ticker-dot"></div> <strong>14,561 sq ft</strong> · Patrick Mahomes completes Kansas City compound</div>
+    <div class="ticker-item"><div class="ticker-dot"></div> <strong>$238M</strong> · Jeff Bezos breaks Miami record</div>
+    <div class="ticker-item"><div class="ticker-dot"></div> <strong>$295M</strong> · The One, Bel Air — most expensive US listing in history</div>
+    <div class="ticker-item"><div class="ticker-dot"></div> <strong>$36.75M</strong> · LeBron James acquires Beverly Hills estate</div>
+    <div class="ticker-item"><div class="ticker-dot"></div> <strong>$188M</strong> · Ken Griffin sets Palm Beach record</div>
+    <div class="ticker-item"><div class="ticker-dot"></div> <strong>14,561 sq ft</strong> · Patrick Mahomes completes Kansas City compound</div>
+    <div class="ticker-item"><div class="ticker-dot"></div> <strong>$238M</strong> · Jeff Bezos breaks Miami record</div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="section" id="categories">
+  <div class="section-header">
+    <h2 class="section-title">Browse the <em>file</em></h2>
+    <a href="#" class="section-link">All categories →</a>
+  </div>
+  <div class="categories-grid">
+    <a href="#" class="cat-card large">
+      <div class="cat-count">Pillar I · 50 states</div>
+      <div class="cat-title">Most expensive homes in America</div>
+      <div class="cat-desc">From a $12M lake estate in Alabama to a $225M California megamansion — the priciest residential listing in every US state, updated continuously.</div>
+      <span class="cat-arrow">↗</span>
+    </a>
+    <a href="#" class="cat-card">
+      <div class="cat-count">Pillar II · Athletes & celebrities</div>
+      <div class="cat-title">The athlete estate file</div>
+      <div class="cat-desc">NFL, NBA, and NHL stars. Every compound, what they paid, and what it's worth now.</div>
+      <span class="cat-arrow">↗</span>
+    </a>
+    <a href="#" class="cat-card">
+      <div class="cat-count">Pillar III · All time</div>
+      <div class="cat-title">Record-breaking sales</div>
+      <div class="cat-desc">The most expensive homes ever sold. The biggest price drops. Longest on market.</div>
+      <span class="cat-arrow">↗</span>
+    </a>
+    <a href="#" class="cat-card">
+      <div class="cat-count">Pillar IV · One of a kind</div>
+      <div class="cat-title">Unique & unusual properties</div>
+      <div class="cat-desc">Converted castles. Underground homes. Private islands. Cliffside estates. The genuinely extraordinary.</div>
+      <span class="cat-arrow">↗</span>
+    </a>
+    <a href="#" class="cat-card">
+      <div class="cat-count">Pillar V · The ultra-wealthy</div>
+      <div class="cat-title">Billionaire compounds</div>
+      <div class="cat-desc">Tech founders, hedge fund managers, old money. Who owns what and what they paid.</div>
+      <span class="cat-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- FEATURED LISTINGS -->
+<section class="featured" id="listings">
+  <div class="section-header">
+    <h2 class="section-title" style="color:var(--parchment)">Recently <em>filed</em></h2>
+    <a href="#" class="section-link">Full archive →</a>
+  </div>
+  <div class="listings-grid">
+    <a href="#" class="listing-card">
+      <div class="listing-tag">Record sale · Bel Air, CA</div>
+      <div class="listing-price">$141M</div>
+      <div class="listing-name">The One — Nile Niami Megamansion</div>
+      <div class="listing-loc">924 Bel Air Road, Los Angeles</div>
+      <div class="listing-meta">
+        <div class="listing-spec"><strong>105,000</strong> sq ft</div>
+        <div class="listing-spec"><strong>21</strong> bedrooms</div>
+        <div class="listing-spec"><strong>42</strong> bathrooms</div>
+      </div>
+    </a>
+    <a href="#" class="listing-card">
+      <div class="listing-tag">Athlete estate · Beverly Hills, CA</div>
+      <div class="listing-price">$36.75M</div>
+      <div class="listing-name">LeBron James — Beverly Grove Estate</div>
+      <div class="listing-loc">9955 Beverly Grove Drive</div>
+      <div class="listing-meta">
+        <div class="listing-spec"><strong>16,000</strong> sq ft</div>
+        <div class="listing-spec"><strong>11</strong> bedrooms</div>
+        <div class="listing-spec"><strong>2.5</strong> acres</div>
+      </div>
+    </a>
+    <a href="#" class="listing-card">
+      <div class="listing-tag">Unique property · Belton, MO</div>
+      <div class="listing-price">$4.26M</div>
+      <div class="listing-name">Patrick Mahomes — Spyglass Compound</div>
+      <div class="listing-loc">Loch Lloyd, Kansas City</div>
+      <div class="listing-meta">
+        <div class="listing-spec"><strong>14,561</strong> sq ft</div>
+        <div class="listing-spec"><strong>8</strong> acres</div>
+        <div class="listing-spec"><strong>½</strong> football field</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="section-header">
+    <h2 class="section-title">What we <em>track</em></h2>
+  </div>
+  <div class="pillars-grid">
+    <a href="#" class="pillar">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">Price records</div>
+      <div class="pillar-desc">Every record-setting sale in US residential history, from the Gilded Age to today's billionaire era.</div>
+    </a>
+    <a href="#" class="pillar">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Celebrity & athlete portfolios</div>
+      <div class="pillar-desc">Complete real estate holdings for the NFL, NBA, and NHL's biggest names — and what they paid.</div>
+    </a>
+    <a href="#" class="pillar">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Architectural curiosities</div>
+      <div class="pillar-desc">The homes that defy category. Underground, on cliffs, in castles, on water, in caves.</div>
+    </a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter" id="newsletter">
+  <div>
+    <h2 class="newsletter-title">The weekly filing.</h2>
+    <p class="newsletter-sub">One email, every Friday. The week's most remarkable listing, most jaw-dropping sale, and one property you need to see.</p>
+  </div>
+  <div>
+    <form class="newsletter-form" onsubmit="return false;">
+      <input type="email" placeholder="Your email address">
+      <button type="submit">Join the file →</button>
+      <p class="newsletter-disclaimer">No spam. Unsubscribe any time. Already read by real estate obsessives in 40+ states.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Mansion<span>File</span></div>
+    <p class="footer-tagline">The definitive record of extraordinary residential real estate. Built for the curious.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Explore</div>
+    <ul class="footer-links">
+      <li><a href="#">Most Expensive</a></li>
+      <li><a href="#">Athlete Homes</a></li>
+      <li><a href="#">Record Sales</a></li>
+      <li><a href="#">Unique Properties</a></li>
+      <li><a href="#">By State</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Research</div>
+    <ul class="footer-links">
+      <li><a href="#">Billionaire Estates</a></li>
+      <li><a href="#">Celebrity Portfolios</a></li>
+      <li><a href="#">Price History</a></li>
+      <li><a href="#">Market Records</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Company</div>
+    <ul class="footer-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Newsletter</a></li>
+      <li><a href="#">Advertise</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 MansionFile. All rights reserved.</p>
+  <p>Not a brokerage. For informational purposes only.</p>
+</div>
+
+</body>
+</html>
